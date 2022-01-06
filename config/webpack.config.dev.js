@@ -27,22 +27,7 @@ module.exports = merge(configFactory("development"), {
   // The first two entry points enable "hot" CSS and auto-refreshes for JS.
   mode: "development",
   entry: {
-    meiti_pay_success : [
-  require.resolve("./polyfills"),
-  'babel-polyfill',
-  require.resolve('react-dev-utils/webpackHotDevClient'),
-  paths.appSrc + "/meiti/pay_success/index.js",
-],meiti_order : [
-  require.resolve("./polyfills"),
-  'babel-polyfill',
-  require.resolve('react-dev-utils/webpackHotDevClient'),
-  paths.appSrc + "/meiti/order/index.js",
-],order : [
-  require.resolve("./polyfills"),
-  'babel-polyfill',
-  require.resolve('react-dev-utils/webpackHotDevClient'),
-  paths.appSrc + "/order/index.js",
-],login : [
+  login : [
   require.resolve("./polyfills"),
   'babel-polyfill',
   require.resolve('react-dev-utils/webpackHotDevClient'),
