@@ -4,6 +4,7 @@
 const path = require("path")
 const fs = require("fs")
 const url = require("url")
+const getPublicUrlOrPath = require("react-dev-utils/getPublicUrlOrPath")
 
 // let args = process.argv.slice(2)[0]
 // Make sure any symlinks in the project folder are resolved:
@@ -33,12 +34,17 @@ const getPublicUrl = appPackageJson =>
 // single-page apps that may serve index.html for nested URLs like /todos/42.
 // We can't use a relative path in HTML because we don't want to load something
 // like /todos/42/static/js/bundle.7289d.js. We have to know the root.
-function getServedPath(appPackageJson) {
-  const publicUrl = getPublicUrl(appPackageJson)
-  const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/")
-  return ensureSlash(servedUrl, true)
-}
+const publicUrlOrPath = getPublicUrlOrPath(
+  process.env.NODE_ENV === "development",
+  require(resolveApp("package.json")).homepage,
+  process.env.PUBLIC_URL
+)
+// function getServedPath(appPackageJson) {
+//   const publicUrl = getPublicUrl(appPackageJson)
+//   const servedUrl =
+//     envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/")
+//   return ensureSlash(servedUrl, true)
+// }
 
 // config after eject: we're in ./config/
 module.exports = {
@@ -59,5 +65,6 @@ module.exports = {
   testsSetup: resolveApp("src/setupTests.js"),
   appNodeModules: resolveApp("node_modules"),
   publicUrl: getPublicUrl(resolveApp("package.json")),
-  servedPath: getServedPath(resolveApp("package.json")),
+  // servedPath: getServedPath(resolveApp("package.json")),
+  publicUrlOrPath,
 }
