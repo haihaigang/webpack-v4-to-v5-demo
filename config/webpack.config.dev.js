@@ -49,34 +49,7 @@ module.exports = merge(configFactory("development"), {
   },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
-    new HtmlWebpackPlugin({
-  title : '支付成功页',
-  inject: true,
-  chunks: [ "meiti_pay_success" ],
-  template: paths.appDevHtml,
-  external_js : '',
-  filename: 'meiti/pay_success.html',
-  backbone: '',
-  mock_domain: 'mock-qa.shouwuapp.com'
-}),new HtmlWebpackPlugin({
-  title : '订单详情',
-  inject: true,
-  chunks: [ "meiti_order" ],
-  template: paths.appDevHtml,
-  external_js : '',
-  filename: 'meiti/order.html',
-  backbone: '',
-  mock_domain: 'mock-qa.shouwuapp.com'
-}),new HtmlWebpackPlugin({
-  title : '订单详情',
-  inject: true,
-  chunks: [ "order" ],
-  template: paths.appDevHtml,
-  external_js : '',
-  filename: 'order.html',
-  backbone: '',
-  mock_domain: 'mock-qa.shouwuapp.com'
-}),new HtmlWebpackPlugin({
+  new HtmlWebpackPlugin({
   title : '登录',
   inject: true,
   chunks: [ "login" ],
